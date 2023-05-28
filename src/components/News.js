@@ -26,16 +26,20 @@ export class News extends Component {
     document.title = `${this.props.category} - NewsToday`;
   }
   async updateNews() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=11fa8a5f7c5e491e99f7815e9a0042c7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(0);
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4d2147fff6854fe290f413fed9bfec2b&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     // this.setState({ loading: true })
+    this.props.setProgress(30);
     let data = await fetch(url);
     let parsedData = await data.json()
+    this.props.setProgress(70);
     // console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
     })
+    this.props.setProgress(100);
   }
   async componentDidMount() {
     this.updateNews();
@@ -49,8 +53,8 @@ export class News extends Component {
   //   this.updateNews();
   // }
   fetchMoreData = async ()=>{
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4d2147fff6854fe290f413fed9bfec2b&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
     this.setState({page:this.state.page+1})
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=11fa8a5f7c5e491e99f7815e9a0042c7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     // this.setState({ loading: true })
     let data = await fetch(url);
     let parsedData = await data.json()
@@ -85,8 +89,8 @@ export class News extends Component {
         <div className="container">
           <div className="row">
             {this.state.articles.map((element) => (
-              <div className="col-md-3" key={element.url}>
-                <NewsItem title={element.title ? element.title.slice(0, 44) : ""} mode={this.props.mode} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage ? element.urlToImage : "https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q="} newsUrl={element.url} author={element.author} date={element.publishedAt} />
+              <div className="col-md-3" key={element.title}>
+                <NewsItem title={element.title ? element.title.slice(0, 44) : ""} mode={this.props.mode} source={element.source} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage ? element.urlToImage : "https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q="} newsUrl={element.url} author={element.author} date={element.publishedAt} />
               </div>
             ))}
           </div>

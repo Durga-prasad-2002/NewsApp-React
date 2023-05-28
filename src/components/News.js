@@ -32,7 +32,7 @@ export class News extends Component {
     this.props.setProgress(30);
     let data = await fetch(url);
     let parsedData = await data.json()
-    this.props.setProgress(70);
+    this.props.setProgress(50);
     // console.log(parsedData);
     this.setState({
       articles: parsedData.articles,

@@ -8,6 +8,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
   pageSize=8
+  apiKey=process.env.REACT_NEWS_API_KEY
   constructor(){
     super();
     console.log("App constructor");
@@ -44,24 +45,24 @@ export default class App extends Component {
         onLoaderFinished={() => this.state.setProgress}
       />
         <Routes>
-          {/* <Route path="/NewsApp-React" element={<News setProgress={this.setProgress} key="general" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
+          {/* <Route path="/NewsApp-React" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="general" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
           </Route> */}
-          <Route path="/NewsApp-React" element={<News setProgress={this.setProgress} key="general1" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}></Route>
-          <Route path="/" element={<News setProgress={this.setProgress} key="general" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
+          <Route path="/NewsApp-React" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="general1" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}></Route>
+          <Route path="/" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="general" pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
           </Route>
-          <Route path="business" element={<News setProgress={this.setProgress} key="business" pageSize={this.pageSize} country="in" category="business" mode={this.state.mode}/>}>
+          <Route path="business" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="business" pageSize={this.pageSize} country="in" category="business" mode={this.state.mode}/>}>
           </Route>
-          <Route path="entertainment" element={<News setProgress={this.setProgress} key="entertainment" pageSize={this.pageSize} country="in" category="entertainment" mode={this.state.mode}/>}>
+          <Route path="entertainment" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="entertainment" pageSize={this.pageSize} country="in" category="entertainment" mode={this.state.mode}/>}>
           </Route>
-          <Route path="science" element={<News setProgress={this.setProgress} key="science" pageSize={this.pageSize} country="in" category="science" mode={this.state.mode}/>}>
+          <Route path="science" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="science" pageSize={this.pageSize} country="in" category="science" mode={this.state.mode}/>}>
           </Route>
-          <Route path="health" element={<News setProgress={this.setProgress} key="health" pageSize={this.pageSize} country="in" category="health" mode={this.state.mode}/>}>
+          <Route path="health" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="health" pageSize={this.pageSize} country="in" category="health" mode={this.state.mode}/>}>
           </Route>
-          <Route path="sports" element={<News setProgress={this.setProgress} key="sports" pageSize={this.pageSize} country="in" category="sports" mode={this.state.mode}/>}>
+          <Route path="sports" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="sports" pageSize={this.pageSize} country="in" category="sports" mode={this.state.mode}/>}>
           </Route>
-          <Route path="technology" element={<News setProgress={this.setProgress} key="technology" pageSize={this.pageSize} country="in" category="technology" mode={this.state.mode}/>}>
+          <Route path="technology" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="technology" pageSize={this.pageSize} country="in" category="technology" mode={this.state.mode}/>}>
           </Route>
-          <Route path="general" element={<News setProgress={this.setProgress} key="general1  " pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
+          <Route path="general" element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="general1  " pageSize={this.pageSize} country="in" category="general" mode={this.state.mode}/>}>
           </Route>
         </Routes>
       </BrowserRouter>

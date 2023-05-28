@@ -7,7 +7,7 @@ defineElement(lottie.loadAnimation);
 export class Loading extends Component {
   render() {
     return (
-      <div>
+      <div className='container d-flex justify-content-center align-items-center'>
         <lord-icon
             src="https://cdn.lordicon.com/pxruxqrv.json"
             trigger="loop"

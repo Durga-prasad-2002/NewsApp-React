@@ -1,21 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 
 // define "lord-icon" custom element with default properties
 defineElement(lottie.loadAnimation);
-export class Navbar extends Component {
-  render() {
+const Navbar = (props)=>{
     return (
       <div>
-        <nav className={`navbar navbar-${this.props.mode === "dark" ? "dark" : "light"} navbar-expand-lg bg-${this.props.mode}`} >
+        <nav className={`navbar navbar-${props.mode === "dark" ? "dark" : "light"} navbar-expand-lg bg-${props.mode}`} >
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">NewsToday</Link>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div className={`collapse navbar-collapse bg-${this.props.mode}`} id="navbarSupportedContent">
+            <div className={`collapse navbar-collapse bg-${props.mode}`} id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" to="/">Home</Link>
@@ -45,7 +44,7 @@ export class Navbar extends Component {
             </div>
             <div className="container">
               <div className="form-check form-switch d-flex align-items-center">
-                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={this.props.toggleMode} />
+                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
                 <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
                   <lord-icon
                     src="https://cdn.lordicon.com/tgnqhsfe.json"
@@ -59,7 +58,6 @@ export class Navbar extends Component {
         </nav>
       </div>
     )
-  }
 }
 
 export default Navbar

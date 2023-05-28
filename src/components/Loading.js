@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 
 // define "lord-icon" custom element with default properties
 defineElement(lottie.loadAnimation);
-export class Loading extends Component {
-  render() {
+const Loading=()=> {
+ 
     return (
       <div className='container d-flex justify-content-center align-items-center'>
         <lord-icon
@@ -18,6 +18,5 @@ export class Loading extends Component {
       </div>
     )
   }
-}
 
 export default Loading
